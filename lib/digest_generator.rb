@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "digest_generator/version"
+require_relative 'digest_generator/version'
 require 'xxhash'
 
+# DigestGenerator
 module DigestGenerator
   extend self
 
@@ -17,6 +18,7 @@ module DigestGenerator
     base.include(InstanceMethods)
   end
 
+  # InstanceMethods
   module InstanceMethods
     def refresh_digest
       self.digest = generate_digest
@@ -32,4 +34,3 @@ module DigestGenerator
     end
   end
 end
-

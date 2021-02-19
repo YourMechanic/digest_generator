@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class Tester
   attr_accessor :digest, :name
+
   include DigestGenerator
 
   def attributes
