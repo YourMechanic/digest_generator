@@ -25,12 +25,11 @@ DigestGenerator.digest_63bit(payload) <br/>
 
 2. To use digest as a primary key for a model you need to include DigestGenerator module and define DIGEST_VALID_KEYS as: <br/>
 
-include DigestGenerator
-self.primary_key = 'digest'
-
-DIGEST_VALID_KEYS = %w[
-    name
-  ].freeze
+include DigestGenerator <br/>
+self.primary_key = 'digest' <br/>
+DIGEST_VALID_KEYS = %w[ <br/>
+    name <br/>
+  ].freeze <br/>
 
 <br/>
 Call refresh_digest on an instance of your model to set its digest value. <br/>
