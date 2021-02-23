@@ -13,9 +13,3 @@
 Style/ModuleFunction:
   Exclude:
     - 'lib/digest_generator.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: Strict.
-Style/NumericLiterals:
-  MinDigits: 20

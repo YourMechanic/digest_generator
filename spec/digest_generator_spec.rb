@@ -17,8 +17,12 @@ RSpec.describe DigestGenerator do
   end
 
   describe '.refresh_digest' do
-    it 'generates a digest using DIGEST_VALID_KEYS value' do
+    before do
       person.name = 'payload'
+      person.algorithm = 'xxHash'
+    end
+
+    it 'generates a digest using DIGEST_VALID_KEYS value' do
       expect(person.refresh_digest).to eq(864039234343803250)
     end
   end

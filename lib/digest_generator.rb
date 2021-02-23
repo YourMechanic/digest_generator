@@ -8,6 +8,15 @@ module DigestGenerator
   extend self
 
   MASK_64BIT = 0x7FFFFFFFFFFFFFFF
+  XXHASH_ALGO = 'xxHash'
+
+  def algorithm
+    @algorithm
+  end
+
+  def algorithm=(algorithm)
+    @algorithm = algorithm
+  end
 
   # Hash 64 and mask bit 63 (0-63) to remove signedness to be compatible with postgress bigints
   def digest_63bit(payload)
@@ -30,6 +39,8 @@ module DigestGenerator
       properties = attributes # Cache the hash version of the object
       digest_keys = self.class::DIGEST_VALID_KEYS
       values = digest_keys.map { |key| properties[key] }
+      raise "Please ask the gem author for support for #{algorithm}" unless algorithm == XXHASH_ALGO
+
       digest_63bit(values)
     end
   end
