@@ -7,7 +7,7 @@ A simple 64 bit digest generator which uses xxhash for digest generation.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'digest_generator', :branch => 'main' 
+gem 'digest_generator', :branch => 'master' 
 ```
 
 And then execute:
