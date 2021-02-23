@@ -39,6 +39,7 @@ module DigestGenerator
       properties = attributes # Cache the hash version of the object
       digest_keys = self.class::DIGEST_VALID_KEYS
       values = digest_keys.map { |key| properties[key] }
+      raise 'Please set the algorithm to use' if algorithm.nil?
       raise "Please ask the gem author for support for #{algorithm}" unless algorithm == XXHASH_ALGO
 
       digest_63bit(values)
