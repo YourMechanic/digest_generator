@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     digest_generator (0.1.0)
-      byebug
+      xxhash (~> 0.4.0)
 
 GEM
   remote: https://rubygems.org/
@@ -49,11 +49,11 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
+  byebug
   digest_generator!
   rake (~> 13.0)
   rspec (~> 3.0)
   rubocop (~> 1.7)
-  xxhash (~> 0.4.0)
 
 BUNDLED WITH
    2.2.11
