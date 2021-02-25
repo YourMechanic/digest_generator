@@ -35,7 +35,7 @@ DIGEST_VALID_KEYS = %w[ <br/>
 Call refresh_digest on an instance of your model to set its digest value. <br/>
 
 person = Person.new(name: 'something') <br/>
-person.algorithm = 'xxHash'  (Set the supported algorithm. xxHash is the default algorithm.)<br/>
+person.algorithm = 'xxHash'  (Set the supported algorithm. As xxHash is the default algorithm you can skip this step if you want to use xxHash algorithm.)<br/>
 person.refresh_digest  (now your digest key is set to 64 bit unique value)  <br/>
 
 You can also set algorithm by creating a file digest_generator.rb in config/initializers folder with: <br/>

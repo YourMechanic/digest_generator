@@ -51,7 +51,7 @@ module DigestGenerator
       digest_keys = self.class::DIGEST_VALID_KEYS
       values = digest_keys.map { |key| properties[key] }
       configure_default_algo
-      raise "Please ask the gem author to support for #{algorithm}" unless SUPPORTED_ALGORITHMS.include?(XXHASH_ALGO)
+      raise "Please ask the gem author to add support for #{algorithm}" unless SUPPORTED_ALGORITHMS.include?(XXHASH_ALGO)
 
       digest_63bit(values)
     end
