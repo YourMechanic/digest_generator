@@ -22,6 +22,10 @@ jobs:
           # Any branch if there are none on the default branch - this should be unnecessary if you have your default branch configured correctly
           - v2-dep-
       - run:
+          name: Install bundler for digest_generator
+          working_directory: ~/YourMechanic/digest_generator
+          command: gem install bundler:2.2.11
+      - run:
           name: Install Gems for digest_generator
           working_directory: ~/YourMechanic/digest_generator
           command: bundle install
