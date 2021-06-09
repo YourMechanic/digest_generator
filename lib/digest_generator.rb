@@ -10,7 +10,9 @@ module DigestGenerator
 
   MASK_64BIT = 0x7FFFFFFFFFFFFFFF
   XXHASH_ALGO = 'xxHash'
-  SUPPORTED_ALGORITHMS = [XXHASH_ALGO].freeze
+  XXHASH_ALGO_32 = 'xxHash32'
+  XXHASH_ALGO_64 = 'xxHash64'
+  SUPPORTED_ALGORITHMS = [XXHASH_ALGO, XXHASH_ALGO_32, XXHASH_ALGO_64].freeze
 
   def algorithm
     @algorithm
@@ -32,6 +34,14 @@ module DigestGenerator
 
   def xxhash_digest(payload)
     XXhash.xxh64(payload) & MASK_64BIT
+  end
+
+  def xxhash64_digest(payload)
+    XXhash.xxh64(payload)
+  end
+
+  def xxhash32_digest(payload)
+    XXhash.xxh32(payload)
   end
 
   def self.included(base)
