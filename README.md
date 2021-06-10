@@ -11,11 +11,13 @@ gem 'digest_generator', :branch => 'master'
 ```
 
 And then execute:
-```ruby
-    $ bundle install
-```
+
+  $ bundle install
+
 
 ## Usage
+
+Supported Algorithm at present is xxHash.
 
 This gem can be used in two ways:
 
@@ -25,13 +27,15 @@ This gem can be used in two ways:
 DigestGenerator.digest_63bit(payload)
 ```
 
-You can also set algorithm to xxHash32 or xxHash64 for digest generation
+### To generate Hash 64
 ```ruby
-DigestGenerator.algorithm = 'xxHash32'
-DigestGenerator.digest_63bit(payload)
+DigestGenerator.digest_64bit(payload)
 ```
 
-Supported Algorithms are: xxHash, xxHash32 and xxHash64
+### To generate Hash 32
+```ruby
+DigestGenerator.digest_62bit(payload)
+```
 
 ### To use digest as a primary key for a model you need to include DigestGenerator module and define DIGEST_VALID_KEYS as:
 
@@ -57,7 +61,6 @@ person.refresh_digest
 You can also set algorithm by creating a file digest_generator.rb in config/initializers folder
  with: <br/>
 ```ruby
-# You can also set algorithm to xxHash32 or xxHash64 for digest generation
 DigestGenerator.algorithm = 'xxHash' 
 ```
 

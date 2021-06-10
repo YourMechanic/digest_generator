@@ -12,17 +12,7 @@ RSpec.describe DigestGenerator do
 
   describe '.digest_63bit' do
     it 'generates a 63 bit digest by default' do
-      expect(DigestGenerator.digest_63bit('payload')).to eq(DigestGenerator.xxhash_digest('payload'))
-    end
-
-    it 'generates a 32 bit digest if algo is set to xxHash32' do
-      DigestGenerator.algorithm = 'xxHash32'
-      expect(DigestGenerator.digest_63bit('payload')).to eq(DigestGenerator.xxhash32_digest('payload'))
-    end
-
-    it 'generates a 64 bit digest if algo is set to xxHash64' do
-      DigestGenerator.algorithm = 'xxHash64'
-      expect(DigestGenerator.digest_63bit('payload')).to eq(DigestGenerator.xxhash64_digest('payload'))
+      expect(DigestGenerator.digest_63bit('payload')).to eq(4399811482601270364)
     end
   end
 
