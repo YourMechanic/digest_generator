@@ -3,6 +3,8 @@
 require 'digest_generator'
 require 'tester'
 
+# rubocop:disable Metrics/BlockLength
+
 RSpec.describe DigestGenerator do
   let(:person) { Tester.new }
 
@@ -10,9 +12,21 @@ RSpec.describe DigestGenerator do
     expect(DigestGenerator::VERSION).not_to be nil
   end
 
+  describe '.digest_32bit' do
+    it 'generates a 32 bit digest' do
+      expect(DigestGenerator.digest_32bit('payload')).to eq(1219833882)
+    end
+  end
+
   describe '.digest_63bit' do
     it 'generates a 63 bit digest by default' do
       expect(DigestGenerator.digest_63bit('payload')).to eq(4399811482601270364)
+    end
+  end
+
+  describe '.digest_64bit' do
+    it 'generates a 64 bit digest' do
+      expect(DigestGenerator.digest_64bit('payload')).to eq(4399811482601270364)
     end
   end
 
@@ -26,3 +40,5 @@ RSpec.describe DigestGenerator do
     end
   end
 end
+
+# rubocop:enable Metrics/BlockLength

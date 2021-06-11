@@ -10,9 +10,7 @@ Add this line to your application's Gemfile:
 gem 'digest_generator', :branch => 'master' 
 ```
 
-And then execute:
-
-  $ bundle install
+And then run `bundle install` in application root directory.
 
 
 ## Usage
@@ -27,14 +25,14 @@ This gem can be used in two ways:
 DigestGenerator.digest_63bit(payload)
 ```
 
-### To generate Hash 64
+### To generate Hash 64 bit digest
 ```ruby
 DigestGenerator.digest_64bit(payload)
 ```
 
-### To generate Hash 32
+### To generate Hash 32 bit digest
 ```ruby
-DigestGenerator.digest_62bit(payload)
+DigestGenerator.digest_32bit(payload)
 ```
 
 ### To use digest as a primary key for a model you need to include DigestGenerator module and define DIGEST_VALID_KEYS as:
