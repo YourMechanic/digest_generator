@@ -5,17 +5,17 @@ require_relative 'lib/digest_generator/version'
 Gem::Specification.new do |spec|
   spec.name          = 'digest_generator'
   spec.version       = DigestGenerator::VERSION
-  spec.authors       = ['sachinsaxena1996']
-  spec.email         = ['sachin@yourmechanic.com']
+  spec.authors       = ['Sachin Saxena']
+  spec.email         = ['dev@yourmechanic.com']
 
-  spec.summary       = 'Digest generator to generate 64 bit digest'
+  spec.summary       = 'Digest generator to generate digest'
   spec.description   = 'Generates Hash 64 and mask bit 63 (0-63) to remove signedness
-                          to be compatible with postgres bigints'
+                          to be compatible with postgres bigints, supports xxHash32 and xxHash64 also'
   spec.homepage      = 'https://github.com/YourMechanic/digest_generator'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.6.2')
 
-  spec.metadata['allowed_push_host'] = 'https://github.com/YourMechanic/digest_generator'
+  spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/YourMechanic/digest_generator'

@@ -27,11 +27,17 @@ module DigestGenerator
   # Hash 64 and mask bit 63 (0-63) to remove signedness to be compatible with postgress bigints
   def digest_63bit(payload)
     configure_default_algo
-    send("#{algorithm.downcase}_digest", payload)
+    send("#{algorithm.downcase}63_digest", payload)
   end
 
-  def xxhash_digest(payload)
-    XXhash.xxh64(payload) & MASK_64BIT
+  def digest_32bit(payload)
+    configure_default_algo
+    send("#{algorithm.downcase}32_digest", payload)
+  end
+
+  def digest_64bit(payload)
+    configure_default_algo
+    send("#{algorithm.downcase}64_digest", payload)
   end
 
   def self.included(base)
@@ -58,5 +64,19 @@ module DigestGenerator
 
       digest_63bit(values)
     end
+  end
+
+  private
+
+  def xxhash63_digest(payload)
+    XXhash.xxh64(payload) & MASK_64BIT
+  end
+
+  def xxhash64_digest(payload)
+    XXhash.xxh64(payload)
+  end
+
+  def xxhash32_digest(payload)
+    XXhash.xxh32(payload)
   end
 end

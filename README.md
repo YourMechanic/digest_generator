@@ -1,6 +1,6 @@
 # DigestGenerator
 
-A simple 64 bit digest generator which uses xxhash for digest generation.
+A simple digest generator which uses xxhash for digest generation.
 
 ## Installation
 
@@ -10,37 +10,57 @@ Add this line to your application's Gemfile:
 gem 'digest_generator', :branch => 'master' 
 ```
 
-And then execute:
-
-    $ bundle install
+And then run `bundle install` in application root directory.
 
 
 ## Usage
 
+Supported Algorithm at present is xxHash.
+
 This gem can be used in two ways:
 
-1. To generate Hash 64 and mask bit 63 (0-63) (to remove signedness to be compatible with postgress bigints) call: <br/>
+### To generate Hash 64 and mask bit 63 (0-63) (to remove signedness to be compatible with postgress bigints) call: <br/>
 
-DigestGenerator.digest_63bit(payload) <br/>
+```ruby
+DigestGenerator.digest_63bit(payload)
+```
 
-2. To use digest as a primary key for a model you need to include DigestGenerator module and define DIGEST_VALID_KEYS as: <br/>
+### To generate Hash 64 bit digest
+```ruby
+DigestGenerator.digest_64bit(payload)
+```
 
-include DigestGenerator <br/>
-self.primary_key = 'digest' <br/>
-DIGEST_VALID_KEYS = %w[ <br/>
-    name <br/>
-  ].freeze <br/>
+### To generate Hash 32 bit digest
+```ruby
+DigestGenerator.digest_32bit(payload)
+```
 
-<br/>
+### To use digest as a primary key for a model you need to include DigestGenerator module and define DIGEST_VALID_KEYS as:
+
+```ruby
+include DigestGenerator
+self.primary_key = 'digest'
+DIGEST_VALID_KEYS = %w[
+    name
+  ].freeze
+
+```
+
 Call refresh_digest on an instance of your model to set its digest value. <br/>
+```ruby
+person = Person.new(name: 'something')
+# (Set the supported algorithm. As xxHash is the default algorithm you can skip this step if you want to use xxHash algorithm.)
+person.algorithm = 'xxHash'
+# (now your digest key is set to 64 bit and mask bit 63 (0-63) value)
+person.refresh_digest 
 
-person = Person.new(name: 'something') <br/>
-person.algorithm = 'xxHash'  (Set the supported algorithm. As xxHash is the default algorithm you can skip this step if you want to use xxHash algorithm.)<br/>
-person.refresh_digest  (now your digest key is set to 64 bit unique value)  <br/>
+```
 
-You can also set algorithm by creating a file digest_generator.rb in config/initializers folder with: <br/>
-
-DigestGenerator.algorithm = 'xxHash'
+You can also set algorithm by creating a file digest_generator.rb in config/initializers folder
+ with: <br/>
+```ruby
+DigestGenerator.algorithm = 'xxHash' 
+```
 
 ## License
 
