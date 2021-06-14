@@ -21,7 +21,7 @@ module DigestGenerator
   end
 
   def configure_default_algo
-    self.algorithm = XXHASH_ALGO if algorithm.nil?
+    self.algorithm = XXHASH_ALGO if algorithm.nil? || algorithm == ''
   end
 
   # Hash 64 and mask bit 63 (0-63) to remove signedness to be compatible with postgress bigints
