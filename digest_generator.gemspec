@@ -13,8 +13,6 @@ Gem::Specification.new do |spec|
                           to be compatible with postgres bigints, supports xxHash32 and xxHash64 also'
   spec.homepage      = 'https://github.com/YourMechanic/digest_generator'
   spec.license       = 'MIT'
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.6.2')
-
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
   spec.metadata['homepage_uri'] = spec.homepage
